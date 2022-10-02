@@ -1,0 +1,26 @@
+
+
+
+.checkOut {
+  background-color: #b3daff;
+  margin: 3% 15% 3% 15%;
+  border: 1px solid #000;
+  padding: 2%;
+  box-shadow: 5px 10px 20px;
+  overflow: hidden;
+}
+
+.hello{
+  font-family: 'IM Fell French Canon SC', serif;
+  text-align: center;
+  padding-bottom: 1%;
+}
+
+/* button {
+  float: right;
+  font-family: 'Josefin Sans', sans-serif;
+} */
+
+form {
+  font-family: 'Josefin Sans', sans-serif;
+}
