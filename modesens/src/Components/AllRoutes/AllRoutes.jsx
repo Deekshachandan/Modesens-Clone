@@ -15,10 +15,6 @@ import PrivateRoute from "../PrivateFolder/Private";
 import Payment from "../Payment/Payment";
 import FinalPAyment from "../../LAST-PART/debit";
 
-
-
-
-
 export default function AllRoutes() {
   return (
     <Routes>
@@ -110,7 +106,7 @@ export default function AllRoutes() {
         }
       ></Route>
 
-<Route
+      <Route
         path="/pay"
         element={
           <PrivateRoute>
@@ -120,8 +116,7 @@ export default function AllRoutes() {
         }
       ></Route>
 
-
-<Route
+      <Route
         path="/final"
         element={
           <PrivateRoute>
@@ -130,11 +125,6 @@ export default function AllRoutes() {
           </PrivateRoute>
         }
       ></Route>
-
-
-
-
-
     </Routes>
   );
 }
