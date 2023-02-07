@@ -1,27 +1,34 @@
 import Axios from "./axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Button, Grid, Box, Heading, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import SideBar from "../SideBar/sidebar";
 
 
 
-export default function GetAllProducts({handleMale}) {
-  const [post, setPost] = useState([]);
+export default function GetAllProducts() {
+  const [gender,setGender]=useState(null);
+  const [category,setCategory]=useState(null);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
+  const [post, setPost] = useState([]);
 
   const handleClick = (id) => {
     navigate(`/product/${id}`);
     console.log("id",id)
   };
-
+const handleGender=(payload)=>{setGender(payload)}
+const handleCategory=(payload)=>{setCategory(payload)}
 useEffect(() => {
-    Axios({ page, limit: 10 }).then((res) => setPost(res.data));
-  }, [page]);
+    Axios({ page, limit: 10,gender,category }).then((res) =>{ 
+      
+      setPost(res.data)});
+  }, [page,gender,category]);
 
   return (
     <div>
-      <Grid
+      <SideBar handleGender={handleGender} handleCategory={handleCategory} />
+      <Grid 
         gridTemplateColumns={{ base: "repeat(3,1fr)" }}
         ml="30px"
         lineHeight={4}
@@ -30,15 +37,18 @@ useEffect(() => {
         mt={5}
         mb={5}
         p={5}
+        border="1px solid gray"
+        
       >
         {post.map((item) => (
-          <div>
-            <Box mt={3} key={item.id}>
+          <div  key={item.id}>
+            <Box mt={3}>
               <img
                 src={item.image}
                 alt=""
                 style={{
-                  width: "50%",
+                  width: "50vw",
+                  height:"40vh",
                   display: "block",
                   justifyContent: "center",
                   alignItems: "center",

@@ -7,13 +7,14 @@ import Kids from "../Kids/Kids";
 import Women from "../Women/women";
 import Mens from "../Mens/Mens";
 import FinalWhyModesens from "../WhyModesens/FinalWhyMod";
-import Login from "../Login/Login";
+import Login from "../Login/LoginIn"
 import SinglePage from "../../SinglePage/SinglePage";
 import Cart from "../../Cart/cart";
-import Out from "../LogOut/OUT";
+
 import PrivateRoute from "../PrivateFolder/Private";
 import Payment from "../Payment/Payment";
 import FinalPAyment from "../../LAST-PART/debit";
+
 
 export default function AllRoutes() {
   return (
@@ -95,7 +96,7 @@ export default function AllRoutes() {
         }
       ></Route>
       <Route path="/login" element={<Login />}></Route>
-      <Route path="/logout" element={<Out />}></Route>
+   
       <Route
         path="/cart"
         element={

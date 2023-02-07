@@ -15,7 +15,7 @@ const links = [
      { path: "/com", title: "COMMUNITY" },
      {path:"/why", title:"WHY MODESENSE"},
     {path:"/login", title:"LOGIN"},
-    {path:"/logout", title:"LOGOUT"},
+  
     
  
 ]
@@ -59,14 +59,14 @@ export default function Navbar() {
             />
           </div>
 
- <div className="search"> 
-            <img
+           <div className="search"> 
+          
+        <Input placeholder='SEARCH' size='sm' />
+        <img
               style={{ width: "30%", }}
               src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png"
               alt=""
             /> 
-          
-               <Input placeholder='SEARCH' size='sm' />
 
       
           </div>

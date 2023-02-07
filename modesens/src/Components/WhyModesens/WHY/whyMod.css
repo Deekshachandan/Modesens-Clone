@@ -133,9 +133,11 @@
     padding-bottom: 40px;
   }
   .loy_flex {
+    margin-top: 25px;
     display: flex;
     justify-content: space-between;
-    gap: 60px;
+    gap: 30px;
+    padding: 25px;
   }
 
   .loy_left p {
@@ -155,6 +157,7 @@
     color: rgba(0, 0, 0, 0.838);
   }
   .loy_left button {
+    margin-top: 20px;
     padding: 10px;
     padding-left: 14px;
     padding-right: 14px;

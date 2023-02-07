@@ -199,7 +199,7 @@ export default function HomeSmallImages() {
               Get timely, accurate product information every time you browse.
             </h3>
             <Button mt={2} colorScheme="blue">
-              INSTALL nOW
+              INSTALL NOW
             </Button>
             <img
               src="https://cdn.modesens.com/static/img/20211109downloadright.png"

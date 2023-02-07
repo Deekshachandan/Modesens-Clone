@@ -1,17 +1,21 @@
 import { Flex, Box, Image, Text, Select, Button } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const getData = (url) => {
   return fetch(url).then((res) => res.json());
 };
+let storage;
+const getCartItem=()=>{
 
-// const statusFromLS = JSON.parse(localStorage.getItem("loginStatus"))
-// console.log(statusFromLS);
+  storage = JSON.parse(localStorage.getItem("storage")) || [];
+}
+// console.log("storage",storage)
 
 const SingleItem = () => {
   const [qty, setQty] = useState(1);
-  // const navigate=useNaviagte()
+  const[data,setData]=useState([])
+
 
   const handleInc = () => {
     setQty(qty + 1);
@@ -20,26 +24,30 @@ const SingleItem = () => {
   const handleDec = () => {
     setQty(qty - 1);
   };
-  let storage = [] || JSON.stringify(localStorage.getItem("storage"));
+
+React.useEffect(()=>{
+  getCartItem();
+},[])
   const handleLocalStorage = (elem) => {
-    console.log("elem", elem);
-    storage.push(elem);
-    localStorage.setItem("storage", JSON.stringify(storage));
+elem={...elem,price:elem.price*qty}
+ storage.push(elem)
+
+      localStorage.setItem("storage", JSON.stringify(storage));
   };
 
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState([]);
-  console.log("ekfoew", id);
+  
   useEffect(() => {
     getData(
-      `https://warm-falls-74936.herokuapp.com/api/products?id=${id}`
+      `https://modesens-api.onrender.com/products?id=${id}`
     ).then(
       (res) => setProductDetails(res)
       // console.log(res)
     );
   }, [id]);
 
-  console.log(productDetails);
+
 
   return (
     <>
@@ -52,13 +60,13 @@ const SingleItem = () => {
         >
           {productDetails &&
             productDetails.map((item) => (
-              <Image src={item.image} h="100%"></Image>
+              <Image src={item.image} h="100%"   key={item.id}></Image>
             ))}
         </Box>
         <Box border="1px solid white" w="600px" padding="30px">
           {productDetails &&
             productDetails.map((item) => (
-              <Box>
+              <Box key={item.id}>
                 <Text fontSize="27px" fontWeight="800">
                   {item.brand}
                 </Text>
@@ -178,45 +186,3 @@ const SingleItem = () => {
 
 export default SingleItem;
 
-// import { useState, useEffect } from "react"
-// import { useParams } from "react-router-dom"
-// import { Image, Text, Heading, Button, Box, Grid } from "@chakra-ui/react"
-
-// const getData = (url) => {
-//     return fetch(url).then((res) => res.json())
-// }
-// export default function SingleItem() {
-//     const [post, setpost] = useState([])
-//     const { id } = useParams()
-
-//     useEffect(() => {
-//         getData(`https://warm-falls-74936.herokuapp.com/api/products/${id}`).then((res) =>
-//             // console.log(res),
-//             setpost(res)
-//         )
-
-//         }
-//     }, [id]
-
-//     console.log(post)
-
-//     return (
-//         <div>
-//  <Box>
-//                 <Grid gridTemplateColumns="repeat(2, 1fr)" border="2px solid black" gap={2}>
-
-//                     <Box>
-//                         <Image  src={post.image} />
-//                     </Box>
-
-//                     <Box>
-//                         <Heading>{post.brand}</Heading>
-//                         <Text>{post.description}</Text>
-//                         <Text>{post.price}</Text>
-//                         <Button>ADD TO CART</Button>
-//                         </Box>
-//                         </Grid></Box>
-
-//         </div>
-//     )
-//
